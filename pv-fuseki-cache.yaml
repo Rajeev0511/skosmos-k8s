@@ -1,0 +1,42 @@
+
+      apiVersion: v1
+      kind: PersistentVolume
+      metadata:
+          name: pv-fuseki-cache
+      spec:
+        capacity:
+          storage: 100Mi
+        accessModes:
+                - ReadWriteOnce
+        hostPath:
+            path: "/pv/fuseki-cache"
+
+  # Persistent Volume host path  
+      apiVersion: v1
+      kind: PersistentVolume
+      metadata:
+          name: pv-fuseki
+      spec:
+        capacity:
+          storage: 100Mi
+        accessModes:
+                - ReadWriteOnce
+        hostPath:
+            path: "/pv/fuseki"
+
+
+  # Persistent Volume host path  
+      apiVersion: v1
+      kind: PersistentVolume
+      metadata:
+          name: pv-skosmos
+      spec:
+        capacity:
+          storage: 100Mi
+        accessModes:
+                - ReadWriteOnce
+        hostPath:
+            path: "/pv/skosmos"
+
+
+
