@@ -24,8 +24,10 @@ spec:
       labels:
         io.kompose.service: fuseki-cache
     spec:
+      imagePullSecrets:
+        - name: mydocsec
       containers:
-        - image: varnish
+        - image: rajeev05/varnish:1.0
           name: skosmos-fuseki-cache
           ports:
             - containerPort: 80
