@@ -24,13 +24,15 @@ spec:
       labels:
         io.kompose.service: fuseki
     spec:
+      imagePullSecrets:
+        - name: mydocsec
       containers:
         - env:
             - name: ADMIN_PASSWORD
               value: admin
             - name: JVM_ARGS
               value: -Xmx2g
-          image: stain/jena-fuseki
+          image: rajeev05/jena-fuseki:1.0
           name: skosmos-fuseki
           ports:
             - containerPort: 3030
