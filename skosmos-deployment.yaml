@@ -24,8 +24,10 @@ spec:
       labels:
         io.kompose.service: skosmos
     spec:
+      imagePullSecrets:
+        - name: mydocsec
       containers:
-        - image: skosmos
+        - image: rajeev05/skosmos:1.0
           name: skosmos-web
           ports:
             - containerPort: 80
