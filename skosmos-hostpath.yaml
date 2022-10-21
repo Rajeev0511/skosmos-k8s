@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose -f docker-compose.yml convert
+    kompose.version: 1.26.1 (a9d05d509)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: skosmos
+  name: skosmos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: skosmos
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose -f docker-compose.yml convert
+        kompose.version: 1.26.1 (a9d05d509)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: skosmos
+    spec:
+      imagePullSecrets:
+        - name: mydocsec
+      containers:
+        - image: rajeev05/skosmos:1.0
+          name: skosmos-web
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /var/www/html/config.ttl
+              name: vol1
+      restartPolicy: Always
+      volumes:
+        - name: vol1
+          hostPath:
+            path: /var/config/config-docker-compose.ttl
